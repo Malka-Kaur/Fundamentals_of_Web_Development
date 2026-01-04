@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malka Kaur - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --text-main: #1a1a1a;
+            --text-muted: #6c757d;
+            --accent-primary: #6366f1; /* Indigo */
+            --accent-secondary: #ec4899; /* Pink */
+            
+            /* Modern Category Colors */
+            --color-html: #ff5f6d;
+            --color-css: #2193b0;
+            --color-js: #f7b733;
+            --color-logic: #4facfe;
+            
+            --card-bg: #ffffff;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.05) 0px, transparent 50%);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 60px 20px;
+        }
+
+        .glass-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: left;
+            margin-bottom: 80px;
+            border-left: 5px solid var(--accent-primary);
+            padding-left: 30px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(90deg, var(--text-main), var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted) !important;
+            font-weight: 400;
+        }
+
+        /* SECTION HEADINGS */
+        .main-section-title {
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent-secondary);
+            margin: 100px 0 40px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .main-section-title::after {
+            content: "";
+            height: 1px;
+            flex: 1;
+            background: linear-gradient(90deg, var(--accent-secondary), transparent);
+            margin-left: 20px;
+        }
+
+        .category {
+            margin-bottom: 80px;
+        }
+
+        .category-header {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 35px;
+        }
+
+        .badge {
+            width: fit-content;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 10px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        
+        /* Category Badges */
+        .html-group .badge { background: var(--color-html); }
+        .css-group .badge { background: var(--color-css); }
+        .js-group .badge { background: var(--color-js); }
+        .logic-group .badge { background: var(--color-logic); }
+
+        .cat-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 0px; /* Sharp modern look */
+            border: 1px solid #eee;
+            padding: 30px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 0;
+            transition: var(--transition);
+            z-index: 0;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: transparent;
+        }
+
+        .html-group .card:hover::before { background: var(--color-html); height: 4px; }
+        .css-group .card:hover::before { background: var(--color-css); height: 4px; }
+        .js-group .card:hover::before { background: var(--color-js); height: 4px; }
+        .logic-group .card:hover::before { background: var(--color-logic); height: 4px; }
+
+        .card-title {
+            position: relative;
+            z-index: 1;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--text-main);
+            min-height: 2.5em;
+        }
+
+        .card-actions {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            text-align: center;
+            padding: 10px 0;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: 1px solid #ddd;
+        }
+
+        .btn-output { 
+            background-color: var(--text-main); 
+            color: #fff; 
+            border-color: var(--text-main);
+        }
+        
+        .btn-github { 
+            background-color: transparent; 
+            color: var(--text-main); 
+        }
+
+        .btn:hover {
+            letter-spacing: 2px;
+            background: var(--accent-primary);
+            color: white;
+            border-color: var(--accent-primary);
+        }
+
+        footer {
+            margin-top: 100px;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            padding: 40px 0;
+            border-top: 1px solid #eee;
+        }
+
+        /* Unique Decorative Background Element */
+        .glass-container::before {
+            content: "MALKA";
+            position: fixed;
+            top: 20%;
+            right: -5%;
+            font-size: 15vw;
+            font-weight: 900;
+            color: rgba(0,0,0,0.02);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @media (max-width: 600px) {
+            header { margin-bottom: 40px; padding-left: 20px; }
+            .card-grid { grid-template-columns: 1fr; }
+            .card { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glass-container">
+        <header>
+            <h1>Malka Kaur</h1>
+            <p>Web Development Practical Submissions</p>
+        </header>
+
+        <h2 class="main-section-title">Assignment Questions</h2>
+        
+        <div class="category logic-group">
+            <div class="category-header">
+                <span class="badge">LOGIC</span>
+                <span class="cat-title">JavaScript Assignments</span>
+            </div>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-title">1. Ticket Price Calculator</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions\1_Ticket_Master.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/1_Ticker_Master.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">2. Discount Calculator</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions\2_Discount_Calculator.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/2_Discount_Calculator.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">3. Day of Week Switch</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions\3_Day_of_Week.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/3_Day_of_Week.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">4. Leap Year Checker</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions\4_Leap_Year_Checker.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/4_Leap_Year_Checker.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">5. BMI Calculator</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions\5_BMI_Calculator.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/5_BMI_Calculator.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">6. Number Guessing Game</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions/6_Num_Guessing_Game.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/6_Num_Guessing_Game.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">7. FizzBuzz Terminal</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions/7_FizzBuzz.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/7_FizzBuzz.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">8. Print Numbers (Loop)</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions/8_Print_Num.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/8_Print_Num.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">9. Factorial Calculator</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions/9_Factorial.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/9_Factorial.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">10. Array Iteration</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions/10_Array_Iteration.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/10_Array_Iteration.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">11. Armstrong Checker</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions/11_Armstromg_Checker.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/11_Armstromg_Checker.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">12. Pyramid Pattern</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions/12_Pyramid_Pattern.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/12_Pyramid_Pattern.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">13. Sum Checker</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions/13_Sum_Checker.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/13_Sum_Checker.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">14. Closest to 100</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions/14_Closest_to_100.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/14_Closest_to_100.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">15. Last Digit Checker</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions/15_Last_Digit_Checker.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/15_Last_Digit_Checker.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">16. Even or Odd</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions/16_Odd_or_Even.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/16_Odd_or_Even.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">17. Largest Number</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions/17_Largest_num.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/17_Largest_num.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">18. Duck Number Detector</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions/18_Duck_number_Dectector.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/18_Duck_number_Dectector.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">19. Palindrome Checker</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions/19_Palindrome_Checker.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/19_Palindrome_Checker.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">20. Product Sign Finder</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions/20_Product_Sign_Finder.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/20_Product_Sign_Finder.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">21. Prime Number Checker</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions/21_Prime_Number.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/21_Prime_Number.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">22. Neon Number Checker</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions/22_Neon_Number.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/22_Neon_Number.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">23. Fibonacci Sequence</div>
+                    <div class="card-actions">
+                        <a href="Assignment_Questions/23_Fabonicci_Sequence.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Assignment_Questions/23_Fabonicci_Sequence.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <h2 class="main-section-title">Practical Submissions</h2>
+
+        <div class="category html-group">
+            <div class="category-header">
+                <span class="badge">HTML</span>
+                <span class="cat-title">Core Structure</span>
+            </div>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-title">1. Basic HTML Tags</div>
+                    <div class="card-actions">
+                        <a href="Practical_Questions/1_Basic_HTML_Tags.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Practical_Questions/1_Basic_HTML_Tags.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">2. Links, Images & Lists</div>
+                    <div class="card-actions">
+                        <a href="Practical_Questions/2_Links_Images_Lists.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Practical_Questions/2_Links_Images_Lists.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">3. Table Layouts</div>
+                    <div class="card-actions">
+                        <a href="Practical_Questions/3_Table.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Practical_Questions/3_Table.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">4. Forms & Input</div>
+                    <div class="card-actions">
+                        <a href="Practical_Questions/4_Form.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Practical_Questions/4_Form.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">5. Semantic HTML5</div>
+                    <div class="card-actions">
+                        <a href="Practical_Questions/5_Semantic_Tags.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Practical_Questions/5_Semantic_Tags.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="category css-group">
+            <div class="category-header">
+                <span class="badge">CSS</span>
+                <span class="cat-title">Styling & Design</span>
+            </div>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-title">6. Types of CSS Styles</div>
+                    <div class="card-actions">
+                        <a href="Practical_Questions/6_CSS_in_HTML.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Practical_Questions/6_CSS_in_HTML.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">7. Advanced Box Model</div>
+                    <div class="card-actions">
+                        <a href="Practical_Questions/7_Advanced_CSS.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Practical_Questions/7_Advanced_CSS.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">8. CSS Selectors Mastery</div>
+                    <div class="card-actions">
+                        <a href="Practical_Questions/8_CSS_Selectors.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Practical_Questions/8_CSS_Selectors.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">9. Responsive Design</div>
+                    <div class="card-actions">
+                        <a href="Practical_Questions/9_Responsive_webpage.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Practical_Questions/9_Responsive_webpage.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                   <div class="card-title">10. Div & Span Layout</div>
+                   <div class="card-actions">
+                        <a href="Practical_Questions/10_DIv&Span.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Practical_Questions/10_DIv&Span.html" class="btn btn-github">Git Code</a>
+                   </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category js-group">
+            <div class="category-header">
+                <span class="badge">JS</span>
+                <span class="cat-title">Interactivity Practicals</span>
+            </div>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-title">11. Arithmetic Calculator</div>
+                    <div class="card-actions">
+                        <a href="Practical_Questions/11_Basic_Arithematic.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Practical_Questions/11_Basic_Arithematic.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">12. Conditionals & Loops</div>
+                    <div class="card-actions">
+                        <a href="Practical_Questions/12_Conditionals&Looping.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Practical_Questions/12_Conditionals%26Looping.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">13. Function & Scope</div>
+                    <div class="card-actions">
+                        <a href="Practical_Questions/13_Functions&Scoop.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Practical_Questions/13_Functions%26Scoop.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">14. Form Validation</div>
+                    <div class="card-actions">
+                        <a href="Practical_Questions/14_JS_Events.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Practical_Questions/14_JS_Events.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">15. DOM Manipulation</div>
+                    <div class="card-actions">
+                        <a href="Practical_Questions/15_DOM_Manipulation.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Practical_Questions/15_DOM_Manipulation.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">16. Toggle CSS Classes</div>
+                    <div class="card-actions">
+                        <a href="Practical_Questions/16_Toggle_CSS_Classes.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Practical_Questions/16_Toggle_CSS_Classes.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">17. Event Listeners</div>
+                    <div class="card-actions">
+                        <a href="Practical_Questions/17_Event_Listener.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Practical_Questions/17_Event_Listener.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">18. Node Management</div>
+                    <div class="card-actions">
+                        <a href="Practical_Questions/18_Nodes.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Practical_Questions/18_Nodes.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">19. Canvas Drawing</div>
+                    <div class="card-actions">
+                        <a href="Practical_Questions/19_Canvas.html" class="btn btn-output">Live View</a>
+                        <a href="https://github.com/Malka-Kaur/Fundamentals_of_Web_Development/blob/main/Practical_Questions/19_Canvas.html" class="btn btn-github">Git Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            © 2025 Malka Kaur | Webtech Assignment Complete Portfolio
+        </footer>
+    </div>
+
+</body>
+</html>
