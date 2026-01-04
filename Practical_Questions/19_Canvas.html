@@ -1,0 +1,60 @@
+<!--Canvas drawing using the <canvas> element: draw shapes and fill colors--><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Drawing Example</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        canvas {
+            background-color: #87CEEB; /* Sky Blue */
+            border: 5px solid #333;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="myCanvas" width="500" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // 1. Draw the Grass (Rectangle)
+        ctx.fillStyle = '#2d5a27';
+        ctx.fillRect(0, 300, 500, 100);
+
+        // 2. Draw the House Base (Rectangle)
+        ctx.fillStyle = '#a52a2a'; // Brown
+        ctx.fillRect(150, 200, 200, 100);
+
+        // 3. Draw the Roof (Triangle/Path)
+        ctx.fillStyle = '#4b0082'; // Indigo
+        ctx.beginPath();
+        ctx.moveTo(150, 200);  // Left corner
+        ctx.lineTo(250, 100);  // Peak
+        ctx.lineTo(350, 200);  // Right corner
+        ctx.closePath();
+        ctx.fill();
+
+        // 4. Draw the Door (Rectangle)
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(230, 240, 40, 60);
+
+        // 5. Draw the Sun (Circle/Arc)
+        ctx.fillStyle = '#ffd700'; // Gold
+        ctx.beginPath();
+        ctx.arc(400, 80, 40, 0, Math.PI * 2); // (x, y, radius, startAngle, endAngle)
+        ctx.fill();
+
+    </script>
+</body>
+</html>
