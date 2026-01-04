@@ -1,0 +1,32 @@
+<!-- Create and manipulate elements using JavaScript: append, remove, or modify child nodes -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="myList">
+    <li>Item 1</li>
+</ul>
+<button onclick="addItem()">Add Item</button>
+<button onclick="removeItem()">Remove Last</button>
+
+<script>
+    function addItem() {
+        const li = document.createElement("li");
+        li.innerText = "New Dynamic Item";
+        document.getElementById('myList').appendChild(li);
+    }
+
+    function removeItem() {
+        const list = document.getElementById('myList');
+        if (list.lastElementChild) {
+            list.removeChild(list.lastElementChild);
+        }
+    }
+</script>
+</body>
+</html>

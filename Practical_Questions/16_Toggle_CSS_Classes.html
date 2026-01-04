@@ -1,0 +1,29 @@
+<!--Show or hide HTML elements using JavaScript and toggle CSS classes dynamically-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+    .hidden { display: none; }
+    .fancy { color: blue; font-weight: bold; font-size: 20px; }
+</style>
+
+<div id="box">Toggle my style or visibility!</div>
+<button onclick="toggleVisibility()">Show/Hide</button>
+<button onclick="toggleStyle()">Toggle Fancy Style</button>
+
+<script>
+    function toggleVisibility() {
+        document.getElementById('box').classList.toggle('hidden');
+    }
+    function toggleStyle() {
+        document.getElementById('box').classList.toggle('fancy');
+    }
+</script>
+</body>
+</html>

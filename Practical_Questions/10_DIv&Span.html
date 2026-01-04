@@ -1,0 +1,101 @@
+<!-- div and span elements for layout and apply styling with CSS -->
+
+<DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Malka Kaur</title>
+<style>
+body {
+font-family: Arial, sans-serif; margin: 0;
+padding: 20px;
+background-color: #fef8ff;
+color: #2c3e50;
+}
+.header {
+background-color: #960da8;
+color:#fff;
+text-align: center;
+padding: 2rem;
+ border-radius: 10px;
+}
+.header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+.header p {
+margin-top: 10px;
+font-size: 1em;
+}
+g.about, .skills, .contact {
+background-color:#fff;
+border: 2px solid #ddd;
+padding: 1.5rem;
+margin-top: 20px;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+/* Headings */
+.about h2, .skills h2, .contact h2 {
+    color:#c757e4; margin-top: 0;
+}
+
+/* Using span for inline highlights */
+.highlight {
+color:#68c1fc;
+font-weight: bold;
+
+}
+/* Skills list */
+.skills ul {
+    padding-left: 20px;
+}
+
+.skills ul li {
+    margin-bottom: 10px;
+}
+
+.footer {
+text-align: center;
+margin-top: 30px; padding: 1em;
+background-color: #fcecfe;
+border-radius: 5px; font-style: italic;
+}
+</style>
+</head>
+<body>
+    <div class="header">
+<h1>Hi, I'm Malka Kaur!</h1>
+<p>A web developer passionate about building projects and learning new technologies.</p> </div>
+<!-- About Me -->
+<div class="about">
+<h2>About Me</h2>
+<p>I love coding and creating web applications. My favorite technologies are
+<span class="highlight">HTML</span>,
+<span class="highlight">CSS</span>, and
+<span class="highlight">Javascript</span>.
+</p>
+
+</div>
+
+<!-- skills-->
+<div class="skills">
+    <h2>My Skills</h2>
+    <ul>
+        <li><span class="highlight">Front-End Development:</span> HTML, CSS, JavaScript</li> 
+        <li><span class="highlight">Responsive Design: </span> Flexbox & Grid</li>
+        <li><span class="highlight">Version Control:</span> Git & GitHub</li>
+    </ul>
+</div>
+<!-- Contact -->
+<div class="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <span class="highlight">malka.kaur@gmail.com</span></p>
+    <p>Phone: <span class="highlight">+91-9967XXXXXX/span></p>
+</div>
+<!-- Footer -->
+<div class="footer">
+    Thank-you Everyone.
+</div>
+</body>
+</html>

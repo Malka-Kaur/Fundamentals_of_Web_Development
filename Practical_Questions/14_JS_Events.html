@@ -1,0 +1,35 @@
+<!-- HTML form validation using JavaScript events like onsubmit, oninput, and use alert() for
+feedback -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="valForm" onsubmit="return validateForm()">
+    <input type="text" id="username" placeholder="Username (min 5 chars)" oninput="checkLength()">
+    <span id="hint"></span><br><br>
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    function checkLength() {
+        const val = document.getElementById('username').value;
+        document.getElementById('hint').innerText = val.length < 5 ? " Too short" : " OK";
+    }
+
+    function validateForm() {
+        const val = document.getElementById('username').value;
+        if (val.length < 5) {
+            alert("Submission failed: Username is too short!");
+            return false; // Prevents form submission
+        }
+        alert("Success!");
+        return true;
+    }
+</script>
+</body>
+</html>

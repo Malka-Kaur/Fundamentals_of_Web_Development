@@ -1,0 +1,36 @@
+<!-- conditional statements and looping (for, while, do…while) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="runLoops()">Run Loops Demo</button>
+<div id="out" style="white-space: pre; font-family: monospace; margin-top: 10px;"></div>
+
+<script>
+    function runLoops() {
+        let display = "";
+        
+        // For Loop
+        display += "For Loop (0-2): ";
+        for (let i = 0; i < 3; i++) { display += i + " "; }
+
+        // While Loop
+        display += "\nWhile Loop (3-5): ";
+        let j = 3;
+        while (j <= 5) { display += j + " "; j++; }
+
+        // Do...While
+        display += "\nDo...While (6): ";
+        let k = 6;
+        do { display += k + " "; k++; } while (k < 6);
+
+        document.getElementById('out').innerText = display;
+    }
+</script>
+</body>
+</html>

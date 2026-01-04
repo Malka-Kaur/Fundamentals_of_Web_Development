@@ -1,0 +1,70 @@
+<!-- Create and invoke user-defined functions in JavaScript; use var, let, and const for scope demonstration -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Function & Scope Demo</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .output-box { 
+            background: #272822; color: #f8f8f2; 
+            padding: 15px; border-radius: 5px; 
+            font-family: monospace; white-space: pre-wrap;
+        }
+        .note { color: #666; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <h2>JavaScript Scope & Functions</h2>
+    <p>Check the box below and the <strong>Browser Console (F12)</strong> to see scope errors.</p>
+    <button onclick="runScopeDemo()">Invoke Function</button>
+    <div id="display" class="output-box">Click the button to run the demo...</div>
+    <script>
+        // 1. GLOBAL SCOPE
+        // Accessible everywhere in the script
+        const globalConst = "GLOBAL: I am accessible everywhere.";
+
+        /**
+         * 2. USER-DEFINED FUNCTION
+         * This function demonstrates internal scopes
+         */
+        function runScopeDemo() {
+            const display = document.getElementById('display');
+            display.innerText = "--- Function Invoked ---\n";
+
+            // 3. FUNCTION SCOPE (var)
+            // Visible throughout the entire function, regardless of blocks
+            var functionScoped = "VAR: I am function-scoped.";
+
+            if (true) {
+                // 4. BLOCK SCOPE (let and const)
+                // Only visible inside these curly braces {}
+                let blockScoped = "LET: I am block-scoped.";
+                const alsoBlockScoped = "CONST: I am also block-scoped.";
+
+                display.innerText += blockScoped + "\n";
+                display.innerText += alsoBlockScoped + "\n";
+                display.innerText += functionScoped + " (inside block)\n";
+            }
+
+            // TESTING ACCESS OUTSIDE THE BLOCK
+            display.innerText += "\n--- Outside the IF block ---\n";
+            
+            // This works because 'var' ignores the block
+            display.innerText += functionScoped + " (still works!)\n";
+
+            // These would cause a CRASH if not handled, because they died in the block
+            try {
+                display.innerText += blockScoped; 
+            } catch (err) {
+                display.innerText += "LET ERROR: Cannot access blockScoped here.\n";
+                console.error("Scope Error:", err.message);
+            }
+
+            // Accessing Global
+            display.innerText += "\n" + globalConst;
+        }
+    </script>
+</body>
+</html>

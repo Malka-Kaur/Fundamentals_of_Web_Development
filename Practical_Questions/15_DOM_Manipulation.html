@@ -1,0 +1,22 @@
+<!-- DOM manipulation using getElementById(), querySelector(), and innerHTML -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="myTitle">Original Title</h1>
+<p class="text">Original Paragraph</p>
+<button onclick="changeDOM()">Change Content</button>
+
+<script>
+    function changeDOM() {
+        document.getElementById('myTitle').innerHTML = "<em>Title Updated!</em>";
+        document.querySelector('.text').innerText = "Paragraph updated via querySelector";
+    }
+</script>
+</body>
+</html>

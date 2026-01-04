@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FizzBuzz Terminal</title>
+    <style>
+        :root {
+            --fizz-color: #00ff88;
+            --buzz-color: #00d4ff;
+            --fizzbuzz-color: #ff0077;
+            --bg-color: #0d1117;
+            --text-gray: #8b949e;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: white;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-weight: 300;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--text-gray);
+            margin: 0;
+        }
+
+        .terminal {
+            background: #010409;
+            width: 100%;
+            max-width: 600px;
+            height: 450px;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            overflow-y: auto;
+            padding: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            scrollbar-width: thin;
+            scrollbar-color: #30363d transparent;
+        }
+
+        /* Line styling */
+        .line {
+            display: flex;
+            gap: 15px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        .line:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .index { color: #484f58; min-width: 30px; }
+
+        /* Status Colors */
+        .fizz { color: var(--fizz-color); font-weight: bold; text-shadow: 0 0 10px rgba(0, 255, 136, 0.3); }
+        .buzz { color: var(--buzz-color); font-weight: bold; text-shadow: 0 0 10px rgba(0, 212, 255, 0.3); }
+        .fizzbuzz { color: var(--fizzbuzz-color); font-weight: bold; text-shadow: 0 0 15px rgba(255, 0, 119, 0.4); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Custom Scrollbar */
+        .terminal::-webkit-scrollbar { width: 6px; }
+        .terminal::-webkit-scrollbar-thumb { background: #30363d; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h2>System Scan: FizzBuzz</h2>
+        <p style="color: var(--text-gray); font-size: 0.8rem;">Executing loop 1..100</p>
+    </div>
+
+    <div class="terminal" id="terminal">
+        </div>
+
+    <script>
+        const terminal = document.getElementById('terminal');
+
+        function fizzBuzz() {
+            for (let i = 1; i <= 100; i++) {
+                // Use a timeout to create a "streaming" animation effect
+                setTimeout(() => {
+                    let content = i;
+                    let className = "";
+
+                    if (i % 3 === 0 && i % 5 === 0) {
+                        content = "FIZZBUZZ";
+                        className = "fizzbuzz";
+                    } else if (i % 3 === 0) {
+                        content = "FIZZ";
+                        className = "fizz";
+                    } else if (i % 5 === 0) {
+                        content = "BUZZ";
+                        className = "buzz";
+                    }
+
+                    const line = document.createElement('div');
+                    line.className = 'line';
+                    line.innerHTML = `
+                        <span class="index">${i.toString().padStart(3, '0')}</span>
+                        <span class="${className}">${content}</span>
+                    `;
+
+                    terminal.appendChild(line);
+                    
+                    // Auto-scroll to bottom
+                    terminal.scrollTop = terminal.scrollHeight;
+                    
+                    // Also keep the console log as requested
+                    console.log(content);
+                }, i * 50); // Adds 50ms delay per line
+            }
+        }
+
+        // Start the process
+        fizzBuzz();
+    </script>
+</body>
+</html>

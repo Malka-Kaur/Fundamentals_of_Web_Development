@@ -1,0 +1,35 @@
+<!-- JavaScript-enabled web page that performs basic arithmetic operations using input from users -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="padding: 20px; border: 1px solid #ccc; width: 300px;">
+        <h3>Arithmetic Calculator</h3>
+        <input type="number" id="n1" placeholder="Num 1"><br><br>
+        <input type="number" id="n2" placeholder="Num 2"><br><br>
+        <button onclick="calc('+')">+</button>
+        <button onclick="calc('-')">-</button>
+        <button onclick="calc('*')">*</button>
+        <button onclick="calc('/')">/</button>
+        <p>Result: <span id="res">0</span></p>
+    </div>
+
+    <script>
+        function calc(op) {
+            const a = parseFloat(document.getElementById('n1').value);
+            const b = parseFloat(document.getElementById('n2').value);
+            let result = 0;
+            if (op === '+') result = a + b;
+            if (op === '-') result = a - b;
+            if (op === '*') result = a * b;
+            if (op === '/') result = b !== 0 ? a / b : "Error (Div by 0)";
+            document.getElementById('res').innerText = result;
+        }
+    </script>
+</body>
+</html>
