@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malka Kaur | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #b05a7e; 
+            --secondary: #4a3f44;
+            --bg-light: #fdfafb;
+            --white: #ffffff;
+            --text: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            width: 100%;
+            padding: 20px 10%;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo { font-size: 24px; font-weight: 600; color: var(--primary); }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 30px; }
+        nav ul li a { text-decoration: none; color: var(--text); font-weight: 500; transition: 0.3s; }
+        nav ul li a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10%;
+            background: linear-gradient(135deg, #fdfafb 0%, #fce4ec 100%);
+        }
+
+        .hero-content h1 { font-size: 55px; line-height: 1.2; margin: 10px 0; }
+        .hero-content span { color: var(--primary); }
+        
+        .hero-img img {
+            width: 380px;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 20px 20px 0px var(--primary);
+            border: 5px solid var(--white);
+        }
+
+        /* Common Section Styling */
+        section { padding: 80px 10%; }
+        .heading { text-align: center; font-size: 36px; margin-bottom: 50px; }
+        .heading span { color: var(--primary); }
+
+        /* About Section */
+        .about-box {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Expertise / Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.4s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            background: var(--primary);
+            color: white;
+        }
+
+        .skill-card i { font-size: 45px; margin-bottom: 15px; color: var(--primary); }
+        .skill-card:hover i { color: white; }
+
+        /* Projects Section */
+        .project-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .project-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #eee;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .project-card:hover { border-color: var(--primary); }
+        .project-card h3 { color: var(--primary); margin-bottom: 10px; }
+        .project-link { 
+            display: inline-block; 
+            margin-top: 15px; 
+            color: var(--primary); 
+            text-decoration: none; 
+            font-weight: 600; 
+        }
+
+        /* Achievements Section */
+        .cert-list {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .cert-item {
+            background: #fff;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .cert-info { display: flex; align-items: center; gap: 15px; }
+        .cert-info i { color: var(--primary); font-size: 20px; }
+        .cert-link { color: var(--primary); text-decoration: none; font-size: 14px; border-bottom: 1px solid var(--primary); }
+
+        /* Education Section */
+        .edu-container {
+            max-width: 850px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .edu-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 6px solid var(--primary);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .tag { display: inline-block; background: #fce4ec; color: var(--primary); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 10px;}
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 50px 10%;
+        }
+        .socials a { color: white; font-size: 22px; margin: 0 15px; transition: 0.3s; }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column-reverse; text-align: center; height: auto; padding-top: 120px; }
+            .hero-img img { width: 300px; height: 380px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Malka Kaur</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Expertise</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h3>Hello, I'm</h3>
+            <h1><span>Malka Kaur</span></h1>
+            <p>B.Tech CSE Student (AI & ML) | Creative Developer | UI Designer</p>
+            <br>
+            <a href="#projects" style="text-decoration: none;">
+                <button style="padding: 12px 30px; background: var(--primary); color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: 600;">View Projects</button>
+            </a>
+        </div>
+        <div class="hero-img">
+            <img src="My_photo.jpeg" alt="Malka Kaur">
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="heading">About <span>Me</span></h2>
+        <div class="about-box">
+            <p>I am a technology enthusiast specializing in Artificial Intelligence and Machine Learning. I enjoy bridging the gap between technical logic and creative design, focusing on building user-centric solutions that make an impact.</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="heading">My <span>Expertise</span></h2>
+        <div class="skills-grid">
+            <div class="skill-card"><i class="fab fa-html5"></i><h3>HTML</h3><p>Structure</p></div>
+            <div class="skill-card"><i class="fab fa-css3-alt"></i><h3>CSS</h3><p>Design</p></div>
+            <div class="skill-card"><i class="fab fa-js"></i><h3>JavaScript</h3><p>Logic</p></div>
+            <div class="skill-card"><i class="fas fa-palette"></i><h3>Graphics</h3><p>Visuals</p></div>
+            <div class="skill-card"><i class="fab fa-python"></i><h3>Python</h3><p>AI & ML</p></div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="heading">My <span>Projects</span></h2>
+        <div class="project-container">
+            <div class="project-card">
+                <h3>Neural Codex (TechSprint Hackathon)</h3>
+                <p><strong>Our Winner Solution:</strong> An AI-powered platform for mindful task management. Designed to help users stay productive while maintaining mental well-being through intelligent scheduling.</p>
+                <a href="#" class="project-link"><i class="fab fa-github"></i> View on GitHub</a> | 
+                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Live Solution</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements">
+        <h2 class="heading">Achievements & <span>Certificates</span></h2>
+        <ul class="cert-list">
+            <li class="cert-item">
+                <div class="cert-info"><i class="fas fa-certificate"></i> <span>IBM Web Development Certificate</span></div>
+                <a href="IBM_WEb_Certificate.pdf" class="cert-link">View Certificate</a>
+            </li>
+            <li class="cert-item">
+                <div class="cert-info"><i class="fas fa-certificate"></i> <span>IBM Foundation Course with C Programming</span></div>
+                <a href="IBM_C_Certificate.pdf" class="cert-link">View Certificate</a>
+            </li>
+            <li class="cert-item">
+                <div class="cert-info"><i class="fas fa-certificate"></i> <span>Adobe Graphics Designer Certificate</span></div>
+                <a href="Adobe_Graphics_Design_Certificate.pdf" class="cert-link">View Certificate</a>
+            </li>
+            <li class="cert-item">
+                <div class="cert-info"><i class="fas fa-trophy"></i> <span>Participated in SIH Hackathon</span></div>
+                <span>National Level</span>
+            </li>
+            <li class="cert-item">
+                <div class="cert-info"><i class="fas fa-trophy"></i> <span>Participated in TechSprint Hackathon</span></div>
+                <span>Winner Solution</span>
+            </li>
+        </ul>
+    </section>
+
+    <section id="education">
+        <h2 class="heading">My <span>Education</span></h2>
+        <div class="edu-container">
+            <div class="edu-card">
+                <span class="tag">CURRENTLY PURSUING</span>
+                <h3>B.Tech in CSE (AI & ML)</h3>
+                <h4>Rungta International Skills University</h4>
+            </div>
+            <div class="edu-card">
+                <h3>Higher Secondary Examination</h3>
+                <h4>Heritage International Public School</h4>
+            </div>
+            <div class="edu-card">
+                <h3>Matriculation</h3>
+                <h4>Heritage International Public School</h4>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="socials">
+            <a href="https://www.linkedin.com/in/malka-kaur-569185383/?skipRedirect=true"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/Malka-Kaur"><i class="fab fa-github"></i></a>
+        </div>
+        <br>
+        <p>&copy; 2026 Malka Kaur | Portfolio</p>
+    </footer>
+
+</body>
+</html>
