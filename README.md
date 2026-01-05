@@ -28,7 +28,7 @@ Assignment questions including:
 
 
 Practical Questions including:
-1. Create +C46:C65a basic HTML web page using headings, paragraphs, and text formatting tags
+1. Create basic HTML web page using headings, paragraphs, and text formatting tags
 2. Design a webpage demonstrating HTML links, images, and lists (ordered, unordered, nested)
 3. Create a table-based layout with merged cells, alignment, and caption using HTML
 4. Design a webpage with an HTML form having text input, radio buttons, checkboxes, select menus, and submit/reset buttons
